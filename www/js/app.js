@@ -9,8 +9,9 @@ angular.module('starter', ['ionic',
   'starter.controllers', 
   'starter.services'])
 
-.run(function($ionicPlatform, QuickActionService) {
-  $ionicPlatform.ready(function() {
+.run(function($ionicPlatform, $rootScope, $ionicTabsDelegate, QuickActionService) {
+  $ionicPlatform.ready(
+    function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
     if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
@@ -24,7 +25,7 @@ angular.module('starter', ['ionic',
     }
 
     QuickActionService.configure();
-
+    
 
     console.log("READY TO GO!");
   });

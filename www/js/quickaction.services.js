@@ -39,7 +39,7 @@ function QuickActionService($rootScope, $q, $state) {
                             type: 'account',
                             title: 'Account',
                             subtitle: '',
-                            iconType: 'cloud'
+                            iconType: 'profile'
                         },
                         {
                             type: 'maps',
@@ -51,8 +51,10 @@ function QuickActionService($rootScope, $q, $state) {
 
                     // Set event handler to check which Quick Action was pressed
                     window.ThreeDeeTouch.onHomeIconPressed = function(payload) {
-                        $rootScope.$broadcast('openTab', payload.type);  
-                        // $state.go('tabs.'+payload.type);    
+                        // $rootScope.$broadcast('openTab', payload.type);  
+                        
+                        // Alternatively, just jump state from here
+                        $state.go('tab.'+payload.type);    
                     };
                 }
         })

@@ -1,31 +1,14 @@
 angular.module('starter.controllers', [])
+.controller('TabsCtrl', function($rootScope, $state){
+    //Register listeners for 3D Touch
+    $rootScope.$on('openTab', function(e, tabName) {
+      console.log("PRESSED "+tabName);
+      $state.go('tab.'+tabName);
+    });
+})
 
-.controller('DashCtrl', function($scope, $rootScope, $ionicTabsDelegate) {
-  //Setup tabs
-  $scope.openTab = function (index){
-      console.log("Opening tab "+index);
-      $ionicTabsDelegate.select(index);
-    }
-
-  $rootScope.$on('openTab', function(e, tabName) {
-    console.log("PRESSED "+tabName);
-    debugger;
-    switch(tabName){
-      case 'dash':
-        $scope.openTab(0);
-        break;
-      case 'chats':
-        $scope.openTab(1);
-        break;
-      case 'account':
-        $scope.openTab(2);
-        break;
-      case 'maps':
-        $scope.openTab(3);
-        break;
-    }
-  });
-
+.controller('DashCtrl', function() {
+  
 })
 
 .controller('ChatsCtrl', function($scope, $rootScope, Chats) {
@@ -52,6 +35,8 @@ angular.module('starter.controllers', [])
     enableFriends: true
   };
 })
-.controller('MapsCtrl', function($scope){
-  
+.controller('MapsCtrl', function($scope, $rootScope){
+  $scope.testTab = function(){
+    $rootScope.$broadcast('openTab', 'account');
+  }
 });
