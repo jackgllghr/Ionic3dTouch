@@ -1,4 +1,4 @@
 # Ionic3dTouch
-Sample using 3D touch for tab selection with Ionic Framework
+Sample Ionic app using 3D touch quick actions for tab selection.
  
  
